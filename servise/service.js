@@ -20,13 +20,11 @@ function createData(label, category, priority) {
         category: category,
         priority: priority
     })
-    fs.writeFileSync(path,JSON.stringify(array))
+    fs.writeFileSync(path, JSON.stringify(array))
     return array
 }
 
 
 module.exports = {
-    getAll,
-    getById,
-    createData
+    getAll, getById, createData, updateEnvironment, deleteEnvironment
 };
