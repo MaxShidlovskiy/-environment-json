@@ -47,6 +47,27 @@ app.post(`/`, function (req, res) {
     }
 })
 
+app.put('/:id', function (req, res) {
+    try {
+        const { id } = req.params;
+        const { label, category, priority } = req.body;
+        const data = updateEnvironment(id, label, category, priority);
+        res.send(data);
+    } catch (error) {
+        res.send(error.message);
+    }
+})
+
+app.delete('/:id', function (req, res) {
+    try {
+        const { id } = req.params;
+        const data = deleteEnvironment(id);
+        res.send(data);
+    } catch (error) {
+        res.send(error.message)
+    }
+});
+
 app.listen(3000, function () {
     console.log(`Сервер запущен`);
 })
