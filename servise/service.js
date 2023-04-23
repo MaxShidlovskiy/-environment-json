@@ -24,6 +24,31 @@ function createData(label, category, priority) {
     return array
 }
 
+function updateEnvironment(id, label, category, priority) {
+    const arr = JSON.parse(fs.readFileSync(path));
+    const filtered = arr.filter((elem) => elem.id != id);
+    if (filtered.length !== arr.length) {
+        filtered.push({
+            id: id,
+            label: label,
+            category: category,
+            priority: priority
+        });
+        fs.writeFileSync(path, JSON.stringify(filtered));
+        return filtered;
+
+    } else {
+        throw new Error('id нет');
+    };
+
+};
+
+function deleteEnvironment(id) {
+    const arr = JSON.parse(fs.readFileSync(path));
+    const filtered = arr.filter((elem) => elem.id != id);
+    fs.writeFileSync(path, JSON.stringify(filtered))
+    return filtered;
+};
 
 module.exports = {
     getAll, getById, createData, updateEnvironment, deleteEnvironment
