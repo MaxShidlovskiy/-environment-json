@@ -1,9 +1,6 @@
 const express = require(`express`);
 const {
-    getAll,
-    getById,
-    createData
-} = require(`./servise/service.js`);
+    getAll,getById,createData,updateEnvironment, deleteEnvironment} = require(`./servise/service.js`);
 const bodyParser = require(`body-parser`);
 
 const app = express();
